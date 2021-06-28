@@ -18,10 +18,17 @@ public class Car {
 
     public void play() {
         int number = makeRandomNumber();
-        if (number >= MIN_GO){
+        goOrStop(number);
+    }
+
+    public void goOrStop(int number) {
+        if (isGo(number)){
             position++;
-            return;
         }
+    }
+
+    public boolean isGo(int number) {
+        return number >= MIN_GO;
     }
 
     public String getName() {
