@@ -2,19 +2,21 @@ import java.util.Random;
 
 public class Car {
     private final int MAX_RANDOM = 9;
-    final String name;
-    int position;
+    final CarName name;
+    Position position;
 
     public Car(String name) {
-        if (name.isEmpty()){
-            throw new IllegalArgumentException("적어도 1글자 이상이어야 합니다.");
-        }
+        this.name = new CarName(name);
+        this.position = new Position(0);
+    }
 
-        if (name.length() > 5){
-            throw new IllegalArgumentException("5글자 이하여야 합니다.");
-        }
+    public Car(String name, int position) {
+        this.name = new CarName(name);
+        this.position = new Position(position);
+    }
 
-        this.name = name;
+    public boolean isWinner(Position maxPosition) {
+        return position.equals(maxPosition);
     }
 
     protected int getRandomNumber(){
@@ -24,29 +26,29 @@ public class Car {
 
     public void play(int number) {
         if (number >= 4){
-            this.position++;
+            position = new Position(position.getPos() + 1);
         }
     }
 
     public void play2(){
         int number = getRandomNumber();
         if (number >= 4){
-            this.position++;
+            position = new Position(position.getPos() + 1);
         }
     }
 
     public void play3(Strategy strategy){
         int number = getRandomNumber();
         if (strategy.check(number)){
-            this.position++;
+            position = new Position(position.getPos() + 1);
         }
     }
 
-    public String getName() {
+    public CarName getName() {
         return this.name;
     }
 
-    public int getPosition() {
-        return this.position;
+    public Position getPosition() {
+        return position;
     }
 }

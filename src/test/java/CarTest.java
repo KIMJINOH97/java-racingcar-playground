@@ -9,7 +9,7 @@ public class CarTest {
     void 객체_생성(){
         String name = "jino";
         Car car = new Car("jino");
-        assertThat(car.getName()).isEqualTo(name);
+        assertThat(car.getName().getName()).isEqualTo(name);
     }
 
     @Test
@@ -28,8 +28,8 @@ public class CarTest {
         Car car2 = new Car("jino");
         car1.play(4);
         car2.play(3);
-        assertThat(car1.getPosition()).isEqualTo(1);
-        assertThat(car2.getPosition()).isEqualTo(0);
+        assertThat(car1.getPosition().getPos()).isEqualTo(1);
+        assertThat(car2.getPosition().getPos()).isEqualTo(0);
     }
 
     @Test
@@ -47,10 +47,11 @@ public class CarTest {
                 return 3;
             }
         };
+
         car1.play2();
         car2.play2();
-        assertThat(car1.getPosition()).isEqualTo(1);
-        assertThat(car2.getPosition()).isEqualTo(0);
+        assertThat(car1.getPosition().getPos()).isEqualTo(1);
+        assertThat(car2.getPosition().getPos()).isEqualTo(0);
     }
 
     @Test
@@ -72,8 +73,8 @@ public class CarTest {
 
         car1.play3(strategy);
         car2.play3(strategy1);
-        assertThat(car1.getPosition()).isEqualTo(1);
-        assertThat(car2.getPosition()).isEqualTo(0);
+        assertThat(car1.getPosition().getPos()).isEqualTo(1);
+        assertThat(car2.getPosition().getPos()).isEqualTo(0);
     }
 
 }
